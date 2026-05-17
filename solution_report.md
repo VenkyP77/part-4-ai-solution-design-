@@ -165,5 +165,31 @@ Input (sensor time-series) → LSTM Encoder → Compressed Representation → LS
 
 ---
 
+## Task 7: Responsible AI Considerations
 
+### Incorrect predictions
+
+1. **False negatives (missed defects)**: Defective products reach customers, causing safety risks or brand damage.
+2. **False positives (false alarms)**: Production is halted unnecessarily, causing delays and loss of trust in the system.
+**Mitigation**: Set conservative thresholds initially; tune based on feedback over time.
+
+### Bias in data
+
+1. **Historical bias**: If past inspectors were less thorough on night shifts, the training data may under-represent defects from those periods. The model could learn to under-flag night production.
+2. **Supplier bias**: If defect labels correlate with specific suppliers, the model might unfairly penalize certain material sources without considering other factors.
+**Mitigation**: Audit training data across shifts, suppliers, and product lines for balanced representation.
+
+### Over-reliance on AI
+
+1. **De-skilling risk**: If operators stop paying attention because "the AI will catch it," human expertise degrades over time.
+2. **Automation complacency**: Trusting the system blindly during edge cases it was never trained for.
+**Mitigation**: Position AI as a decision-support tool, not a replacement. Maintain manual inspection for critical safety components.
+
+### Need for human oversight
+
+1. **Critical decisions stay with humans**: The AI flags; a human decides whether to halt production.
+2. **Override capability**: Operators must be able to override or dismiss predictions with documented reasoning.
+3. **Escalation path**: If the model consistently disagrees with human judgment, trigger a review rather than forcing either side.
+
+---
 
